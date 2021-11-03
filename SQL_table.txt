@@ -1,0 +1,224 @@
+	СОЗДАЙТЕ БАЗУ ИЗ ПРЕДСТАВЛЕННОЙ КАРТИНКИ.
+	- У КАЖДОЙ ТАБЛИЦЫ ДОЛЖНО БЫТЬ ПОЛЕ ID.
+	- ID АВТОИНКРЕМЕНТАЛЬНЫЙ И ЯВЛЯЕТСЯ ПЕРВИЧНЫМ КЛЮЧОМ.
+	ЗАПОЛНИТЕ ТАБЛИЦЫ ДАННЫМИ. НЕ МЕНЕЕ 10 СТРОК В КАЖДОЙ ТАБЛИЦЕ.
+
+
+		create table employees_roles (
+			id serial primary key,
+			id_roles int unique not null,
+			id_employee int unique not null
+		)
+
+		insert into employees_roles (id, id_roles, id_employee) values (default, 1, 1);
+		insert into employees_roles (id, id_roles, id_employee) values (default, 2, 2);
+		insert into employees_roles (id, id_roles, id_employee) values (default, 3, 3);
+		insert into employees_roles (id, id_roles, id_employee) values (default, 4, 4);
+		insert into employees_roles (id, id_roles, id_employee) values (default, 5, 5);
+		insert into employees_roles (id, id_roles, id_employee) values (default, 6, 6);
+		insert into employees_roles (id, id_roles, id_employee) values (default, 7, 7);
+		insert into employees_roles (id, id_roles, id_employee) values (default, 8, 8);
+		insert into employees_roles (id, id_roles, id_employee) values (default, 9, 9);
+		insert into employees_roles (id, id_roles, id_employee) values (default, 10, 10);
+		insert into employees_roles (id, id_roles, id_employee) values (default, 11, 11);
+		insert into employees_roles (id, id_roles, id_employee) values (default, 12, 12);
+		insert into employees_roles (id, id_roles, id_employee) values (default, 13, 13);
+
+		create table employees (
+			id serial primary key,
+			employee_name varchar(40) not null
+		)	
+
+		insert into employees (id, employee_name) values (default, 'Peter Gallagher');
+		insert into employees (id, employee_name) values (default, 'Rupert Grint');
+		insert into employees (id, employee_name) values (default, 'Ron Lyle');
+		insert into employees (id, employee_name) values (default, 'Bob Odenkirk');
+		insert into employees (id, employee_name) values (default, 'Andy Warhol');
+		insert into employees (id, employee_name) values (default, 'Terence Knox');
+		insert into employees (id, employee_name) values (default, 'Michael Evans');
+		insert into employees (id, employee_name) values (default, 'Dick Van Dyke');
+		insert into employees (id, employee_name) values (default, 'Gary Hudson');
+		insert into employees (id, employee_name) values (default, 'Charles Tyner');
+		insert into employees (id, employee_name) values (default, 'Peter Callan');
+		insert into employees (id, employee_name) values (default, 'Clint Eastwood');
+		insert into employees (id, employee_name) values (default, 'Bill Murray');
+
+		create table claim (
+			id serial primary key,
+			service_id int unique not null,
+			employee_id int not null,
+			material_id int unique not null,
+			claim_date date not null,
+			sales_manager int not null,
+			foreign key (employee_id)
+				references employees(id),
+			foreign key (sales_manager)	
+				references employees(id)
+		)
+
+		insert into claim (id, service_id, employee_id, material_id, claim_date, sales_manager) values (default, 1, 1, 1, '2021-10-29', 1 );
+		insert into claim (id, service_id, employee_id, material_id, claim_date, sales_manager) values (default, 2, 2, 2, '2021-10-29', 2 );
+		insert into claim (id, service_id, employee_id, material_id, claim_date, sales_manager) values (default, 3, 3, 3, '2021-10-29', 3 );
+		insert into claim (id, service_id, employee_id, material_id, claim_date, sales_manager) values (default, 4, 4, 4, '2021-10-29', 4 );
+		insert into claim (id, service_id, employee_id, material_id, claim_date, sales_manager) values (default, 5, 5, 5, '2021-10-29', 5 );
+		insert into claim (id, service_id, employee_id, material_id, claim_date, sales_manager) values (default, 6, 6, 6, '2021-10-29', 6 );
+		insert into claim (id, service_id, employee_id, material_id, claim_date, sales_manager) values (default, 7, 7, 7, '2021-10-29', 7 );
+		insert into claim (id, service_id, employee_id, material_id, claim_date, sales_manager) values (default, 8, 8, 8, '2021-10-29', 8 );
+		insert into claim (id, service_id, employee_id, material_id, claim_date, sales_manager) values (default, 9, 9, 9, '2021-10-25', 9 );
+		insert into claim (id, service_id, employee_id, material_id, claim_date, sales_manager) values (default, 10, 10, 10, '2021-10-25', 10 );
+		insert into claim (id, service_id, employee_id, material_id, claim_date, sales_manager) values (default, 11, 11, 11, '2021-10-22', 11 );
+		insert into claim (id, service_id, employee_id, material_id, claim_date, sales_manager) values (default, 12, 12, 12, '2021-10-28', 12 );
+		insert into claim (id, service_id, employee_id, material_id, claim_date, sales_manager) values (default, 13, 13, 13, '2021-10-05', 13 );
+
+		create table service (
+			id serial primary key ,
+			service_title varchar(30) not null,
+			price int not null
+			)
+
+		insert into service (id, service_title, price) values (default, 'Haircut', 500);
+		insert into service (id, service_title, price) values (default, 'Beard cut', 700);
+		insert into service (id, service_title, price) values (default, 'Hair straightening', 900);
+		insert into service (id, service_title, price) values (default, 'Hair colouring ', 1800);
+		insert into service (id, service_title, price) values (default, 'Baby haircut', 1000);
+		insert into service (id, service_title, price) values (default, 'Hair wash', 750);
+		insert into service (id, service_title, price) values (default, 'Hair styling', 870);
+		insert into service (id, service_title, price) values (default, 'Manicure', 1100);
+		insert into service (id, service_title, price) values (default, 'Pedicure', 1400);
+		insert into service (id, service_title, price) values (default, 'Facial massage', 1100);
+		insert into service (id, service_title, price) values (default, 'Piercing', 2000);
+		insert into service (id, service_title, price) values (default, 'Facial care for men', 2400);
+		insert into service (id, service_title, price) values (default, 'Massage', 950);
+
+		create 	table materials (
+			id serial primary key,
+			material_title varchar(30),
+			amount int not null,
+			price int not null
+		)
+
+		insert into materials (id, material_title, amount, price) values (default, 'Timber', 13, 1300);
+		insert into materials (id, material_title, amount, price) values (default, 'Granite', 6, 14000);
+		insert into materials (id, material_title, amount, price) values (default, 'Marble', 10, 20000);
+		insert into materials (id, material_title, amount, price) values (default, 'Sand', 20, 10000);
+		insert into materials (id, material_title, amount, price) values (default, 'Gravel', 17, 8000);
+		insert into materials (id, material_title, amount, price) values (default, 'Silicon blocks', 25, 15950);
+		insert into materials (id, material_title, amount, price) values (default, 'Glass', 16, 9300);
+		insert into materials (id, material_title, amount, price) values (default, 'Shingles', 9, 6700);
+		insert into materials (id, material_title, amount, price) values (default, 'Cement', 24, 21600);
+		insert into materials (id, material_title, amount, price) values (default, 'Fittings', 11, 7600);
+		insert into materials (id, material_title, amount, price) values (default, 'Brick', 12, 4500);
+		insert into materials (id, material_title, amount, price) values (default, 'Shovel', 2, 150);
+		insert into materials (id, material_title, amount, price) values (default, 'Boards', 18, 3500);
+
+		create table roles (
+			id serial primary key,
+			role_title varchar(50) not null
+			
+		)
+		insert into roles (id, role_title) values (default,'Ensign');
+		insert into roles (id, role_title) values (default, 'Captain');
+		insert into roles (id, role_title) values (default, 'Sergeant');
+		insert into roles (id, role_title) values (default, 'Major');
+		insert into roles (id, role_title) values (default, 'General');
+		insert into roles (id, role_title) values (default, 'Lieutenant');
+		insert into roles (id, role_title) values (default, 'Private');
+		insert into roles (id, role_title) values (default, 'Colonel');
+		insert into roles (id, role_title) values (default, 'Lieutenant Colonel');
+		insert into roles (id, role_title) values (default, 'Marshal');
+		insert into roles (id, role_title) values (default, 'Senior bosun');
+		insert into roles (id, role_title) values (default, 'Rear Admiral');
+		insert into roles (id, role_title) values (default, 'Sailor');
+
+
+		create table roles_salary (
+			id serial primary key,
+			id_role int unique not null,
+			id_salary int unique not null,
+			foreign key (id_role)
+				references roles(id)
+		)
+
+		insert into roles_salary (id, id_role, id_salary) values (default, 2, 1);
+		insert into roles_salary (id, id_role, id_salary) values (default, 4, 2);
+		insert into roles_salary (id, id_role, id_salary) values (default, 7, 4);
+		insert into roles_salary (id, id_role, id_salary) values (default, 10, 6);
+		insert into roles_salary (id, id_role, id_salary) values (default, 3, 5);
+		insert into roles_salary (id, id_role, id_salary) values (default, 9, 3);
+		insert into roles_salary (id, id_role, id_salary) values (default, 1, 7);
+		insert into roles_salary (id, id_role, id_salary) values (default, 5, 9);
+		insert into roles_salary (id, id_role, id_salary) values (default, 6, 11);
+		insert into roles_salary (id, id_role, id_salary) values (default, 8, 8);
+		insert into roles_salary (id, id_role, id_salary) values (default, 11, 10);
+		insert into roles_salary (id, id_role, id_salary) values (default, 13, 13);
+		insert into roles_salary (id, id_role, id_salary) values (default, 12, 12);
+
+
+		create table salary (
+			id serial primary key ,
+			mounthly_salary int not null
+		)
+
+		insert into salary (id, mounthly_salary) values (default, 1000);
+		insert into salary (id, mounthly_salary) values (default, 1800);
+		insert into salary (id, mounthly_salary) values (default, 700);
+		insert into salary (id, mounthly_salary) values (default, 9800);
+		insert into salary (id, mounthly_salary) values (default, 7700);
+		insert into salary (id, mounthly_salary) values (default, 93100);
+		insert into salary (id, mounthly_salary) values (default, 5570);
+		insert into salary (id, mounthly_salary) values (default, 4884);
+		insert into salary (id, mounthly_salary) values (default, 4977);
+		insert into salary (id, mounthly_salary) values (default, 3644);
+		insert into salary (id, mounthly_salary) values (default, 2489);
+		insert into salary (id, mounthly_salary) values (default, 35977);
+		insert into salary (id, mounthly_salary) values (default, 10698);
+
+
+
+	alter table roles_salary add constraint fk foreign key (id_salary) references salary(id);
+
+	alter table employees_roles add constraint fk foreign key (id_roles) references roles(id);
+
+	alter table employees_roles add constraint f_k foreign key (id_employee) references employees(id);
+
+	alter table claim add constraint fk foreign key (material_id) references materials (id);
+
+	alter table claim add constraint dist_fk foreign key (service_id) references service (id);
+
+
+		ДОБАВИТЬ ТАБЛИЦУ SUPPLIERS С ПОЛЯМИ ID, NAME
+
+		create table  suppliers(
+			id serial primary key,
+			suppliers_name varchar(20)  
+		);
+
+		ДОБАВИТЬ 10 СТРОК ПОСТАВЩИКОВ В ТАБЛИЦУ SUPPLIERS
+
+		insert into suppliers (id, suppliers_name) values (default, 'Zoe Saldana');
+		insert into suppliers (id, suppliers_name) values (default, 'Kim Darby');
+		insert into suppliers (id, suppliers_name) values (default, 'Christine Baranski');
+		insert into suppliers (id, suppliers_name) values (default, 'Deirdre Lovejoy');
+		insert into suppliers (id, suppliers_name) values (default, 'Phyllis Lyons');
+		insert into suppliers (id, suppliers_name) values (default, 'Meg Ryan');
+		insert into suppliers (id, suppliers_name) values (default, 'Winona Ryder');
+		insert into suppliers (id, suppliers_name) values (default, 'Sigourney Weaver');
+		insert into suppliers (id, suppliers_name) values (default, 'Cyd Charisse');
+		insert into suppliers (id, suppliers_name) values (default, 'Angelina Jolie');
+
+		ОБНОВИТЬ ТАБЛИЦУ MATERIALS. ДОБАВИТЬ ПОЛЕ SUPPLIER_ID КОТОРОЕ СВЯЗАНО С ПОЛЕМ ID В ТАБЛИЦЕ SUPPLIERS
+
+		alter table materials add suppler_id int ;
+
+		alter table materials 
+		add foreign key (suppler_id)
+			references suppliers(id);
+			
+		ОБНОВИТЬ ТАБЛИЦУ EMPLOYEES. ДОБАВИТЬ VARCHAR ПОЛЕ SURNAME НА 50 СИМВОЛОВ.
+
+		alter table employees add surname varchar(50);
+
+		ОБНОВИТЬ ТАБЛИЦУ SALARY. ДОБАВИТЬ VARCHAR ПОЛЕ CURRENCY НА 7 СИМВОЛОВ.
+
+		alter table salary add currency varchar(7);
+
